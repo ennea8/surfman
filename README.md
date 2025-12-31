@@ -59,12 +59,12 @@ Surfman is built as a monorepo using pnpm workspaces:
 
 ### Install CLI globally
 ```bash
-pnpm install -g @surfman/cli
+npm install -g surfman
 ```
 
 ### Install SDK in your project
 ```bash
-pnpm add @surfman/sdk
+npm install surfman-sdk
 ```
 
 ## Quick Start

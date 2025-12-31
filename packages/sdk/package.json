@@ -1,5 +1,5 @@
 {
-  "name": "@surfman/sdk",
+  "name": "surfman-sdk",
   "version": "0.1.0",
   "description": "TypeScript SDK for SurfPool RPC API interaction",
   "main": "./dist/index.js",
@@ -26,10 +26,24 @@
     "surfpool",
     "solana",
     "rpc",
-    "sdk"
+    "sdk",
+    "blockchain",
+    "web3"
   ],
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ennea8/surfman.git",
+    "directory": "packages/sdk"
+  },
+  "homepage": "https://github.com/ennea8/surfman#readme",
+  "bugs": {
+    "url": "https://github.com/ennea8/surfman/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@solana/web3.js": "^1.95.0"
   },
