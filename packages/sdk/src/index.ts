@@ -2,12 +2,14 @@ import { SurfmanClient } from './client/SurfmanClient';
 import { CheatcodesModule } from './modules/cheatcodes';
 import { NetworkModule } from './modules/network';
 import { AccountsModule } from './modules/accounts';
+import { ScanModule } from './modules/scan';
 import type { RpcClientConfig } from './types';
 
 export class Surfman {
   public cheatcodes: CheatcodesModule;
   public network: NetworkModule;
   public accounts: AccountsModule;
+  public scan: ScanModule;
 
   private client: SurfmanClient;
 
@@ -16,6 +18,7 @@ export class Surfman {
     this.cheatcodes = new CheatcodesModule(this.client);
     this.network = new NetworkModule(this.client);
     this.accounts = new AccountsModule(this.client);
+    this.scan = new ScanModule(this.client);
   }
 
   getClient(): SurfmanClient {

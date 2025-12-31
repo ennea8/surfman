@@ -119,3 +119,49 @@ export interface TokenAmount {
   uiAmount: number | null;
   uiAmountString: string;
 }
+
+// Accounts Scan types
+export interface ProgramAccountsConfig {
+  filters?: Array<
+    | { dataSize: number }
+    | { memcmp: { offset: number; bytes: string } }
+  >;
+  encoding?: 'base58' | 'base64' | 'base64+zstd' | 'jsonParsed';
+  withContext?: boolean;
+  commitment?: string;
+  minContextSlot?: number;
+}
+
+export interface KeyedAccount {
+  pubkey: string;
+  account: AccountInfo;
+}
+
+export interface AccountBalance {
+  address: string;
+  lamports: number;
+}
+
+export interface SupplyConfig {
+  commitment?: string;
+  excludeNonCirculatingAccountsList?: boolean;
+}
+
+export interface Supply {
+  total: number;
+  circulating: number;
+  nonCirculating: number;
+  nonCirculatingAccounts: string[];
+}
+
+export interface TokenAccountBalance {
+  address: string;
+  amount: string;
+  decimals: number;
+  uiAmount: number | null;
+  uiAmountString: string;
+}
+
+export type TokenAccountsFilter =
+  | { mint: string }
+  | { programId: string };

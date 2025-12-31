@@ -33,6 +33,12 @@ import { createGetMultipleAccountsCommand } from './commands/accounts/get-multip
 import { createGetBlockCommitmentCommand } from './commands/accounts/get-block-commitment';
 import { createGetTokenAccountBalanceCommand } from './commands/accounts/get-token-account-balance';
 import { createGetTokenSupplyCommand } from './commands/accounts/get-token-supply';
+import { createGetProgramAccountsCommand } from './commands/scan/get-program-accounts';
+import { createGetLargestAccountsCommand } from './commands/scan/get-largest-accounts';
+import { createGetSupplyCommand } from './commands/scan/get-supply';
+import { createGetTokenLargestAccountsCommand } from './commands/scan/get-token-largest-accounts';
+import { createGetTokenAccountsByOwnerCommand } from './commands/scan/get-token-accounts-by-owner';
+import { createGetTokenAccountsByDelegateCommand } from './commands/scan/get-token-accounts-by-delegate';
 
 const program = new Command();
 
@@ -92,11 +98,23 @@ if (isFullHelp) {
   console.log(`  ${chalk.magenta('get-local-signatures')}         Get recent local signatures`);
   console.log(`  ${chalk.magenta('set-program-authority')}        Set/remove program authority\n`);
   
+  console.log(chalk.bold.green('📊 Scan & Analytics (6 commands):\n'));
+  console.log(chalk.dim('  Batch Queries:'));
+  console.log(`  ${chalk.green('get-program-accounts')}          Get all accounts owned by a program`);
+  console.log(`  ${chalk.green('get-largest-accounts')}          Get top 20 accounts by balance`);
+  console.log(`  ${chalk.green('get-supply')}                    Get network supply information\n`);
+  
+  console.log(chalk.dim('  Token Distribution:'));
+  console.log(`  ${chalk.green('get-token-largest-accounts')}    Get largest token holders`);
+  console.log(`  ${chalk.green('get-token-accounts-by-owner')}   Get token accounts by owner`);
+  console.log(`  ${chalk.green('get-token-accounts-by-delegate')} Get delegated token accounts\n`);
+  
   console.log(chalk.bold.cyan('📊 Summary:\n'));
-  console.log(`  Total Commands: ${chalk.bold('32')}`);
+  console.log(`  Total Commands: ${chalk.bold('38')}`);
   console.log(`  Account Queries: ${chalk.yellow('5')}`);
   console.log(`  Network Operations: ${chalk.blue('18')}`);
-  console.log(`  Testing & Development: ${chalk.magenta('9')}\n`);
+  console.log(`  Testing & Development: ${chalk.magenta('9')}`);
+  console.log(`  Scan & Analytics: ${chalk.green('6')}\n`);
   
   console.log(chalk.gray('💡 Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed options\n'));
   process.exit(0);
@@ -175,7 +193,7 @@ program.configureHelp({
 
     // Footer
     output += chalk.gray('💡 Tips:\n');
-    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 32 commands\n');
+    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 38 commands grouped by module\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed command options\n');
     output += chalk.gray('📖 Documentation: ') + chalk.cyan('https://github.com/your-repo/surfman\n');
 
@@ -220,5 +238,13 @@ program.addCommand(createGetMultipleAccountsCommand());
 program.addCommand(createGetBlockCommitmentCommand());
 program.addCommand(createGetTokenAccountBalanceCommand());
 program.addCommand(createGetTokenSupplyCommand());
+
+// Scan
+program.addCommand(createGetProgramAccountsCommand());
+program.addCommand(createGetLargestAccountsCommand());
+program.addCommand(createGetSupplyCommand());
+program.addCommand(createGetTokenLargestAccountsCommand());
+program.addCommand(createGetTokenAccountsByOwnerCommand());
+program.addCommand(createGetTokenAccountsByDelegateCommand());
 
 program.parse();
