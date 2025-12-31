@@ -1,0 +1,38 @@
+{
+  "name": "@surfman/cli",
+  "version": "0.1.0",
+  "description": "CLI tool for SurfPool RPC API interaction",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "surfman": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "test": "echo \"Tests not yet implemented\"",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "surfpool",
+    "solana",
+    "cli",
+    "rpc"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@surfman/sdk": "workspace:*",
+    "commander": "^12.0.0",
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0"
+  }
+}

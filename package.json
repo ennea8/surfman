@@ -1,0 +1,32 @@
+{
+  "name": "surfman",
+  "version": "0.1.0",
+  "description": "SDK and CLI tool for interacting with SurfPool RPC APIs",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "clean": "pnpm -r clean && rm -rf node_modules",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\""
+  },
+  "keywords": [
+    "surfpool",
+    "solana",
+    "rpc",
+    "sdk",
+    "cli",
+    "blockchain"
+  ],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.24.0",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "prettier": "^3.2.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  }
+}
