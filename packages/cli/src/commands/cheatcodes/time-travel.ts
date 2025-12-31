@@ -40,11 +40,11 @@ export function createTimeTravelCommand(): Command {
             throw new Error('Invalid time format. Use: +1d, +1w, +1h, +30m, +60s');
           }
 
-          const currentTimestamp = Date.now() * 1000;
-          config.absoluteTimestamp = currentTimestamp + secondsToAdd * 1_000_000;
+          const currentTimestamp = Date.now();
+          config.absoluteTimestamp = currentTimestamp + secondsToAdd * 1000;
         } else {
-          const oneWeekInMicroseconds = 7 * 24 * 60 * 60 * 1_000_000;
-          config.absoluteTimestamp = Date.now() * 1000 + oneWeekInMicroseconds;
+          const oneWeekInMilliseconds = 7 * 24 * 60 * 60 * 1000;
+          config.absoluteTimestamp = Date.now() + oneWeekInMilliseconds;
           logger.info('No time specified, defaulting to +1 week');
         }
 
