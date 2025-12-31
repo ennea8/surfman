@@ -87,3 +87,35 @@ export interface SimulateTransactionResult {
   unitsConsumed?: number;
   returnData?: any | null;
 }
+
+// Accounts Data types
+export interface AccountInfo {
+  lamports: number;
+  owner: string;
+  data: any;
+  executable: boolean;
+  rentEpoch: number;
+  space?: number;
+}
+
+export interface AccountInfoConfig {
+  encoding?: 'base58' | 'base64' | 'base64+zstd' | 'jsonParsed';
+  dataSlice?: {
+    offset: number;
+    length: number;
+  };
+  commitment?: string;
+  minContextSlot?: number;
+}
+
+export interface BlockCommitment {
+  commitment: number[] | null;
+  totalStake: number;
+}
+
+export interface TokenAmount {
+  amount: string;
+  decimals: number;
+  uiAmount: number | null;
+  uiAmountString: string;
+}

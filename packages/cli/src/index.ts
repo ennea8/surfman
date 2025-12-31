@@ -27,6 +27,11 @@ import { createMinimumLedgerSlotCommand } from './commands/network/minimum-ledge
 import { createGetSignatureStatusesCommand } from './commands/network/get-signature-statuses';
 import { createSimulateTransactionCommand } from './commands/network/simulate-transaction';
 import { createGetRecentPerformanceSamplesCommand } from './commands/network/get-recent-performance-samples';
+import { createGetAccountInfoCommand } from './commands/accounts/get-account-info';
+import { createGetMultipleAccountsCommand } from './commands/accounts/get-multiple-accounts';
+import { createGetBlockCommitmentCommand } from './commands/accounts/get-block-commitment';
+import { createGetTokenAccountBalanceCommand } from './commands/accounts/get-token-account-balance';
+import { createGetTokenSupplyCommand } from './commands/accounts/get-token-supply';
 
 const program = new Command();
 
@@ -65,5 +70,12 @@ program.addCommand(createMinimumLedgerSlotCommand());
 program.addCommand(createGetSignatureStatusesCommand());
 program.addCommand(createSimulateTransactionCommand());
 program.addCommand(createGetRecentPerformanceSamplesCommand());
+
+// Accounts
+program.addCommand(createGetAccountInfoCommand());
+program.addCommand(createGetMultipleAccountsCommand());
+program.addCommand(createGetBlockCommitmentCommand());
+program.addCommand(createGetTokenAccountBalanceCommand());
+program.addCommand(createGetTokenSupplyCommand());
 
 program.parse();
