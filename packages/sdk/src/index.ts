@@ -1,14 +1,18 @@
 import { SurfmanClient } from './client/SurfmanClient';
 import { CheatcodesModule } from './modules/cheatcodes';
+import { NetworkModule } from './modules/network';
 import type { RpcClientConfig } from './types';
 
 export class Surfman {
-  private client: SurfmanClient;
   public cheatcodes: CheatcodesModule;
+  public network: NetworkModule;
+
+  private client: SurfmanClient;
 
   constructor(config: string | RpcClientConfig) {
     this.client = new SurfmanClient(config);
     this.cheatcodes = new CheatcodesModule(this.client);
+    this.network = new NetworkModule(this.client);
   }
 
   getClient(): SurfmanClient {
