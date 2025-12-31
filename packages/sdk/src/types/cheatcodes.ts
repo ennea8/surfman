@@ -25,3 +25,27 @@ export interface SetProgramAuthorityParams {
   programId: string;
   newAuthority: string | null;
 }
+
+export interface TokenAccountUpdate {
+  amount?: number;
+  delegate?: SetSomeAccount;
+  state?: string;
+  delegatedAmount?: number;
+  closeAuthority?: SetSomeAccount;
+}
+
+export interface SetSomeAccount {
+  Account?: string;
+  NoAccount?: boolean;
+}
+
+export interface ResetAccountConfig {
+  includeOwnedAccounts?: boolean;
+}
+
+export interface RpcLogsResponse {
+  signature: string;
+  err: any | null;
+  slot: number;
+  logs?: string[];
+}
