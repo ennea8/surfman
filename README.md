@@ -85,7 +85,7 @@ pnpm cli set-program-authority --program-id <ID> --new-authority <ADDRESS>
 
 **Production (after installing globally):**
 ```bash
-pnpm install -g @surfman/cli
+npm install -g surfman
 
 surfman time-travel --relative +1w
 surfman set-account --pubkey <ADDRESS> --lamports 1000000
@@ -94,7 +94,7 @@ surfman set-program-authority --program-id <ID> --new-authority <ADDRESS>
 
 ### SDK Usage
 ```typescript
-import { Surfman } from '@surfman/sdk';
+import { Surfman } from 'surfman-sdk';
 
 const client = new Surfman('http://localhost:8899');
 

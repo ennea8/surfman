@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { Surfman } from '@surfman/sdk';
+import { Surfman } from 'surfman-sdk';
 import { logger } from '../../utils/logger';
 
 export function createGetClusterNodesCommand(): Command {
