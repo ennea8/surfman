@@ -5,6 +5,8 @@ TypeScript SDK for SurfPool RPC API interaction - A powerful toolkit for Solana 
 [![npm version](https://img.shields.io/npm/v/surfman-sdk.svg)](https://www.npmjs.com/package/surfman-sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> 📖 **[SurfPool Documentation](https://docs.surfpool.run/)** - Learn more about SurfPool's local development environment
+
 ## Features
 
 - 🔧 **Cheatcodes**: Time travel, account manipulation, network control
@@ -232,6 +234,7 @@ surfman --help
 
 ## Documentation
 
+- [SurfPool Documentation](https://docs.surfpool.run/) - Official SurfPool docs
 - [GitHub Repository](https://github.com/ennea8/surfman)
 - [CLI Tool](https://www.npmjs.com/package/surfman)
 - [Report Issues](https://github.com/ennea8/surfman/issues)

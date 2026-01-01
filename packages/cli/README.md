@@ -5,9 +5,11 @@ CLI tool for SurfPool RPC API interaction - Command-line interface for Solana lo
 [![npm version](https://img.shields.io/npm/v/surfman.svg)](https://www.npmjs.com/package/surfman)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> 📖 **[SurfPool Documentation](https://docs.surfpool.run/)** - Learn more about SurfPool's local development environment
+
 ## Features
 
-- ⚡ **38 Commands**: Complete CLI coverage of all Surfman APIs
+- ⚡ **38 Commands**: Complete CLI coverage of all Surfpool APIs
 - 🔧 **Testing Tools**: Time travel, account manipulation, network reset
 - 🌐 **Network Queries**: Blocks, transactions, fees, cluster info
 - 📦 **Account Tools**: Query accounts, tokens, balances
@@ -212,6 +214,7 @@ await client.cheatcodes.timeTravel({ relativeEpoch: 1 });
 
 ## Documentation
 
+- [SurfPool Documentation](https://docs.surfpool.run/) - Official SurfPool docs
 - [GitHub Repository](https://github.com/ennea8/surfman)
 - [SDK Package](https://www.npmjs.com/package/surfman-sdk)
 - [Report Issues](https://github.com/ennea8/surfman/issues)
