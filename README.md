@@ -19,7 +19,7 @@ Surfman is built as a monorepo using pnpm workspaces:
 
 ## Supported APIs
 
-### Cheatcodes Module (9/22 APIs)
+### Cheatcodes Module (22/22 APIs) ✅ COMPLETE
 - ✅ `surfnet_timeTravel` - Time manipulation
 - ✅ `surfnet_setAccount` - Account modification
 - ✅ `surfnet_setProgramAuthority` - Program authority management
@@ -29,16 +29,43 @@ Surfman is built as a monorepo using pnpm workspaces:
 - ✅ `surfnet_setTokenAccount` - Token account updates
 - ✅ `surfnet_resetAccount` - Reset account
 - ✅ `surfnet_resetNetwork` - Reset network
-- ... and 13 more
+- ✅ `surfnet_cloneProgramAccount` - Clone program accounts
+- ✅ `surfnet_profileTransaction` - Profile transactions for compute units
+- ✅ `surfnet_getProfileResultsByTag` - Get profiling results by tag
+- ✅ `surfnet_setSupply` - Configure network supply
+- ✅ `surfnet_getTransactionProfile` - Get transaction profile by signature/UUID
+- ✅ `surfnet_registerIdl` - Register program IDL
+- ✅ `surfnet_getActiveIdl` - Get registered IDL
+- ✅ `surfnet_exportSnapshot` - Export account snapshots
+- ✅ `surfnet_streamAccount` - Stream accounts from data source
+- ✅ `surfnet_getStreamedAccounts` - Get all streamed accounts
+- ✅ `surfnet_getSurfnetInfo` - Get Surfnet network information
+- ✅ `surfnet_writeProgram` - Write program data in chunks
+- ✅ `surfnet_registerScenario` - Register scenarios with account overrides
 
-### Network Health Module (18/22 APIs)
+### Network Health Module (22/22 APIs) ✅ COMPLETE
 - ✅ `getLatestBlockhash` - Get latest blockhash
 - ✅ `getBlock` - Get block details
 - ✅ `getBlocks` - Get confirmed blocks
+- ✅ `getBlocksWithLimit` - Get blocks with limit
+- ✅ `getBlockTime` - Get block timestamp
+- ✅ `getFirstAvailableBlock` - Get first available block
+- ✅ `minimumLedgerSlot` - Get minimum ledger slot
 - ✅ `getTransaction` - Get transaction details
+- ✅ `getSignatureStatuses` - Get signature statuses
+- ✅ `getSignaturesForAddress` - Get address transaction history
 - ✅ `sendTransaction` - Send transaction
 - ✅ `simulateTransaction` - Simulate transaction
-- ... and 12 more
+- ✅ `isBlockhashValid` - Validate blockhash
+- ✅ `getFeeForMessage` - Get transaction fee
+- ✅ `getRecentPrioritizationFees` - Get recent priority fees
+- ✅ `getClusterNodes` - Get cluster node info
+- ✅ `getRecentPerformanceSamples` - Get performance samples
+- ✅ `requestAirdrop` - Request SOL airdrop
+- ✅ `getInflationReward` - Get inflation rewards
+- ✅ `getMaxRetransmitSlot` - Get max retransmit slot
+- ✅ `getMaxShredInsertSlot` - Get max shred insert slot
+- ✅ `getStakeMinimumDelegation` - Get minimum stake delegation
 
 ### Accounts Data Module (5/5 APIs) ✅ COMPLETE
 - ✅ `getAccountInfo` - Get account details
@@ -98,10 +125,24 @@ import { Surfman } from 'surfman-sdk';
 
 const client = new Surfman('http://localhost:8899');
 
-// Cheatcodes
+// Cheatcodes - Time Control
 await client.cheatcodes.timeTravel({ absoluteEpoch: 100 });
 await client.cheatcodes.pauseClock();
+await client.cheatcodes.resumeClock();
+
+// Cheatcodes - Account Management
 await client.cheatcodes.setAccount(pubkey, { lamports: 1000000 });
+await client.cheatcodes.setTokenAccount(owner, mint, { amount: 1000 });
+await client.cheatcodes.resetAccount(pubkey);
+await client.cheatcodes.resetNetwork();
+
+// Cheatcodes - Advanced Features
+await client.cheatcodes.cloneProgramAccount(sourceProgram, destProgram);
+await client.cheatcodes.profileTransaction(txData, 'my-tag');
+await client.cheatcodes.setSupply({ total: 1000000000 });
+await client.cheatcodes.registerIdl(idl);
+const snapshot = await client.cheatcodes.exportSnapshot();
+await client.cheatcodes.writeProgram(programId, hexData, offset);
 
 // Network Health
 const blockhash = await client.network.getLatestBlockhash();
