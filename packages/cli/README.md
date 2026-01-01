@@ -9,7 +9,7 @@ CLI tool for SurfPool RPC API interaction - Command-line interface for Solana lo
 
 ## Features
 
-- ⚡ **55 Commands**: Complete CLI coverage of all Surfpool APIs
+- ⚡ **55 Commands**: Comprehensive CLI for core Surfpool APIs (Network, Accounts, Cheatcodes, Scan)
 - 🔧 **Testing Tools**: Time travel, account manipulation, profiling, snapshots
 - 🌐 **Network Queries**: Blocks, transactions, fees, cluster info, staking
 - 📦 **Account Tools**: Query accounts, tokens, balances
