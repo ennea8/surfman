@@ -38,6 +38,19 @@ import { createGetSupplyCommand } from './commands/scan/get-supply';
 import { createGetTokenLargestAccountsCommand } from './commands/scan/get-token-largest-accounts';
 import { createGetTokenAccountsByOwnerCommand } from './commands/scan/get-token-accounts-by-owner';
 import { createGetTokenAccountsByDelegateCommand } from './commands/scan/get-token-accounts-by-delegate';
+import { createCloneProgramAccountCommand } from './commands/cheatcodes/clone-program-account';
+import { createProfileTransactionCommand } from './commands/cheatcodes/profile-transaction';
+import { createGetProfileResultsByTagCommand } from './commands/cheatcodes/get-profile-results-by-tag';
+import { createSetSupplyCommand } from './commands/cheatcodes/set-supply';
+import { createGetTransactionProfileCommand } from './commands/cheatcodes/get-transaction-profile';
+import { createRegisterIdlCommand } from './commands/cheatcodes/register-idl';
+import { createGetIdlCommand } from './commands/cheatcodes/get-idl';
+import { createExportSnapshotCommand } from './commands/cheatcodes/export-snapshot';
+import { createStreamAccountCommand } from './commands/cheatcodes/stream-account';
+import { createGetStreamedAccountsCommand } from './commands/cheatcodes/get-streamed-accounts';
+import { createGetSurfnetInfoCommand } from './commands/cheatcodes/get-surfnet-info';
+import { createWriteProgramCommand } from './commands/cheatcodes/write-program';
+import { createRegisterScenarioCommand } from './commands/cheatcodes/register-scenario';
 
 const program = new Command();
 
@@ -81,7 +94,7 @@ if (isFullHelp) {
   console.log(`  ${chalk.blue('get-recent-performance-samples')} Get performance samples`);
   console.log(`  ${chalk.blue('request-airdrop')}               Request lamports airdrop\n`);
   
-  console.log(chalk.bold.magenta('🔧 Testing & Development (9 commands):\n'));
+  console.log(chalk.bold.magenta('🔧 Testing & Development (22 commands):\n'));
   console.log(chalk.dim('  Time Control:'));
   console.log(`  ${chalk.magenta('time-travel')}                  Time travel to epoch/slot/timestamp`);
   console.log(`  ${chalk.magenta('pause-clock')}                  Pause the network clock`);
@@ -90,12 +103,33 @@ if (isFullHelp) {
   console.log(chalk.dim('  Account Manipulation:'));
   console.log(`  ${chalk.magenta('set-account')}                  Modify account data/lamports/owner`);
   console.log(`  ${chalk.magenta('set-token-account')}            Update token account properties`);
-  console.log(`  ${chalk.magenta('reset-account')}                Reset account to initial state\n`);
+  console.log(`  ${chalk.magenta('reset-account')}                Reset account to initial state`);
+  console.log(`  ${chalk.magenta('stream-account')}               Stream account from data source`);
+  console.log(`  ${chalk.magenta('get-streamed-accounts')}        Get all streamed accounts\n`);
+  
+  console.log(chalk.dim('  Program Management:'));
+  console.log(`  ${chalk.magenta('clone-program-account')}        Clone program to another address`);
+  console.log(`  ${chalk.magenta('set-program-authority')}        Set/remove program authority`);
+  console.log(`  ${chalk.magenta('write-program')}                Write program data in chunks\n`);
+  
+  console.log(chalk.dim('  Transaction Profiling:'));
+  console.log(`  ${chalk.magenta('profile-transaction')}          Profile transaction compute units`);
+  console.log(`  ${chalk.magenta('get-transaction-profile')}      Get profile by signature/UUID`);
+  console.log(`  ${chalk.magenta('get-profile-results-by-tag')}   Get all profiles for a tag\n`);
+  
+  console.log(chalk.dim('  IDL Management:'));
+  console.log(`  ${chalk.magenta('register-idl')}                 Register program IDL`);
+  console.log(`  ${chalk.magenta('get-idl')}                      Get registered program IDL\n`);
+  
+  console.log(chalk.dim('  Snapshots & Scenarios:'));
+  console.log(`  ${chalk.magenta('export-snapshot')}              Export account snapshots`);
+  console.log(`  ${chalk.magenta('register-scenario')}            Register test scenarios\n`);
   
   console.log(chalk.dim('  Network Management:'));
   console.log(`  ${chalk.magenta('reset-network')}                Reset entire network state`);
   console.log(`  ${chalk.magenta('get-local-signatures')}         Get recent local signatures`);
-  console.log(`  ${chalk.magenta('set-program-authority')}        Set/remove program authority\n`);
+  console.log(`  ${chalk.magenta('set-supply')}                   Set network supply info`);
+  console.log(`  ${chalk.magenta('get-surfnet-info')}             Get Surfnet network info\n`);
   
   console.log(chalk.bold.green('📊 Scan & Analytics (6 commands):\n'));
   console.log(chalk.dim('  Batch Queries:'));
@@ -109,10 +143,10 @@ if (isFullHelp) {
   console.log(`  ${chalk.green('get-token-accounts-by-delegate')} Get delegated token accounts\n`);
   
   console.log(chalk.bold.cyan('📊 Summary:\n'));
-  console.log(`  Total Commands: ${chalk.bold('38')}`);
+  console.log(`  Total Commands: ${chalk.bold('51')}`);
   console.log(`  Account Queries: ${chalk.yellow('5')}`);
   console.log(`  Network Operations: ${chalk.blue('18')}`);
-  console.log(`  Testing & Development: ${chalk.magenta('9')}`);
+  console.log(`  Testing & Development: ${chalk.magenta('22')}`);
   console.log(`  Scan & Analytics: ${chalk.green('6')}\n`);
   
   console.log(chalk.gray('💡 Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed options\n'));
@@ -200,16 +234,41 @@ program.configureHelp({
   },
 });
 
-// Cheatcodes
+// Cheatcodes - Time Control
 program.addCommand(createTimeTravelCommand());
-program.addCommand(createSetAccountCommand());
-program.addCommand(createSetProgramAuthorityCommand());
 program.addCommand(createPauseClockCommand());
 program.addCommand(createResumeClockCommand());
-program.addCommand(createGetLocalSignaturesCommand());
+
+// Cheatcodes - Account Manipulation
+program.addCommand(createSetAccountCommand());
 program.addCommand(createSetTokenAccountCommand());
 program.addCommand(createResetAccountCommand());
+program.addCommand(createStreamAccountCommand());
+program.addCommand(createGetStreamedAccountsCommand());
+
+// Cheatcodes - Program Management
+program.addCommand(createCloneProgramAccountCommand());
+program.addCommand(createSetProgramAuthorityCommand());
+program.addCommand(createWriteProgramCommand());
+
+// Cheatcodes - Transaction Profiling
+program.addCommand(createProfileTransactionCommand());
+program.addCommand(createGetTransactionProfileCommand());
+program.addCommand(createGetProfileResultsByTagCommand());
+
+// Cheatcodes - IDL Management
+program.addCommand(createRegisterIdlCommand());
+program.addCommand(createGetIdlCommand());
+
+// Cheatcodes - Snapshots & Scenarios
+program.addCommand(createExportSnapshotCommand());
+program.addCommand(createRegisterScenarioCommand());
+
+// Cheatcodes - Network Management
 program.addCommand(createResetNetworkCommand());
+program.addCommand(createGetLocalSignaturesCommand());
+program.addCommand(createSetSupplyCommand());
+program.addCommand(createGetSurfnetInfoCommand());
 
 // Network
 program.addCommand(createGetLatestBlockhashCommand());

@@ -9,8 +9,8 @@ CLI tool for SurfPool RPC API interaction - Command-line interface for Solana lo
 
 ## Features
 
-- ⚡ **38 Commands**: Complete CLI coverage of all Surfpool APIs
-- 🔧 **Testing Tools**: Time travel, account manipulation, network reset
+- ⚡ **51 Commands**: Complete CLI coverage of all Surfpool APIs
+- 🔧 **Testing Tools**: Time travel, account manipulation, profiling, snapshots
 - 🌐 **Network Queries**: Blocks, transactions, fees, cluster info
 - 📦 **Account Tools**: Query accounts, tokens, balances
 - 📊 **Analytics**: Scan program accounts, find largest holders
@@ -48,7 +48,7 @@ surfman get-latest-blockhash
 
 ## Command Categories
 
-### 🔧 Testing & Development (9 commands)
+### 🔧 Testing & Development (22 commands)
 
 **Time Control:**
 ```bash
@@ -61,15 +61,44 @@ surfman resume-clock
 **Account Manipulation:**
 ```bash
 surfman set-account --pubkey <ADDR> --lamports 1000000
-surfman set-token-account --address <ADDR> --amount 100
+surfman set-token-account --owner <ADDR> --mint <MINT> --amount 100
 surfman reset-account --pubkey <ADDR>
+surfman stream-account --pubkey <ADDR>
+surfman get-streamed-accounts
+```
+
+**Program Management:**
+```bash
+surfman clone-program-account --source <ID> --destination <ID>
+surfman set-program-authority --program-id <ID> --new-authority <ADDR>
+surfman write-program --program-id <ID> --data-file program.so
+```
+
+**Transaction Profiling:**
+```bash
+surfman profile-transaction --transaction <BASE64> --tag my-test
+surfman get-transaction-profile --id <UUID_OR_SIG>
+surfman get-profile-results-by-tag --tag my-test
+```
+
+**IDL Management:**
+```bash
+surfman register-idl --idl-file program.json
+surfman get-idl --program-id <ID>
+```
+
+**Snapshots & Scenarios:**
+```bash
+surfman export-snapshot --output snapshot.json
+surfman register-scenario --scenario-file scenario.json
 ```
 
 **Network Management:**
 ```bash
 surfman reset-network
 surfman get-local-signatures
-surfman set-program-authority --program-id <ID> --new-authority <ADDR>
+surfman set-supply --total 1000000000
+surfman get-surfnet-info
 ```
 
 ### 🌐 Network Operations (18 commands)
