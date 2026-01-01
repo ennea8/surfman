@@ -1,6 +1,6 @@
 {
   "name": "surfman-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "TypeScript SDK for SurfPool RPC API interaction",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
