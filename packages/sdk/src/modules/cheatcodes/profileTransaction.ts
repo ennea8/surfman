@@ -1,5 +1,5 @@
 import type { SurfmanClient } from '../../client/SurfmanClient';
-import type { RpcProfileResultConfig, UiKeyedProfileResult } from '../../types';
+import type { RpcProfileResultConfig, UiKeyedProfileResult, RpcResponse } from '../../types';
 
 export async function profileTransaction(
   client: SurfmanClient,
@@ -7,8 +7,9 @@ export async function profileTransaction(
   tag?: string,
   config?: RpcProfileResultConfig
 ): Promise<UiKeyedProfileResult> {
-  return client.request<[string, string | undefined, RpcProfileResultConfig | undefined], UiKeyedProfileResult>(
+  const response = await client.request<[string, string | undefined, RpcProfileResultConfig | undefined], RpcResponse<UiKeyedProfileResult>>(
     'surfnet_profileTransaction',
     [transactionData, tag, config]
   );
+  return response.value;
 }

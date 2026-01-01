@@ -1,4 +1,5 @@
 import type { SurfmanClient } from '../../client/SurfmanClient';
+import type { RpcResponse } from '../../types';
 
 export async function getStakeMinimumDelegation(
   client: SurfmanClient,
@@ -6,7 +7,7 @@ export async function getStakeMinimumDelegation(
 ): Promise<number> {
   const response = await client.request<
     [{ commitment?: string; minContextSlot?: number } | undefined],
-    { context: { slot: number }; value: number }
+    RpcResponse<number>
   >('getStakeMinimumDelegation', [config]);
   return response.value;
 }

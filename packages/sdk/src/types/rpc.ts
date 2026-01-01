@@ -9,7 +9,11 @@ export interface JsonRpcResponse<T = any> {
   jsonrpc: '2.0';
   id: number | string;
   result?: T;
-  error?: JsonRpcError;
+  error?: {
+    code: number;
+    message: string;
+    data?: any;
+  };
 }
 
 export interface JsonRpcError {
@@ -22,4 +26,14 @@ export interface RpcClientConfig {
   url: string;
   timeout?: number;
   headers?: Record<string, string>;
+}
+
+export interface RpcResponseContext {
+  slot: number;
+  apiVersion?: string;
+}
+
+export interface RpcResponse<T> {
+  context: RpcResponseContext;
+  value: T;
 }

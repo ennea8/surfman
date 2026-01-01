@@ -1,11 +1,12 @@
 import type { SurfmanClient } from '../../client/SurfmanClient';
-import type { GetSurfnetInfoResponse } from '../../types';
+import type { GetSurfnetInfoResponse, RpcResponse } from '../../types';
 
 export async function getSurfnetInfo(
   client: SurfmanClient
 ): Promise<GetSurfnetInfoResponse> {
-  return client.request<[], GetSurfnetInfoResponse>(
+  const response = await client.request<[], RpcResponse<GetSurfnetInfoResponse>>(
     'surfnet_getSurfnetInfo',
     []
   );
+  return response.value;
 }
