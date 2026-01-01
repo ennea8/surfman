@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SDK Test</title>
+</head>
+<body>
+  <h1>SDK Import Test</h1>
+  <div id="result"></div>
+  
+  <script type="module">
+    try {
+      const result = document.getElementById('result');
+      result.innerHTML = 'Loading SDK...';
+      
+      import('@surfman/sdk').then(module => {
+        result.innerHTML = 'SDK loaded successfully: ' + JSON.stringify(Object.keys(module));
+      }).catch(err => {
+        result.innerHTML = 'Error loading SDK: ' + err.message;
+        console.error(err);
+      });
+    } catch (err) {
+      document.getElementById('result').innerHTML = 'Error: ' + err.message;
+      console.error(err);
+    }
+  </script>
+</body>
+</html>

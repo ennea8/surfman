@@ -19,8 +19,8 @@ export const Desktop: React.FC = () => {
       title,
       component,
       icon,
-      x: 100 + Math.random() * 100,
-      y: 100 + Math.random() * 100,
+      x: 50 + Math.random() * 150,
+      y: 50 + Math.random() * 100,
       width,
       height,
       isMinimized: false,
@@ -56,9 +56,11 @@ export const Desktop: React.FC = () => {
             onClick={() => openDesktopWindow('apiTester', 'API Tester', '🔍', 800, 600)}
           />
           <DesktopIcon
-            icon="👤"
-            label="Account Manager"
-            onClick={() => openDesktopWindow('accountManager', 'Account Manager', '👤', 650, 500)}
+            icon="📋"
+            label="Account Info"
+            onClick={() =>
+              openDesktopWindow('accountManager', 'Account Info', '📋', 600, 500)
+            }
           />
           <DesktopIcon
             icon="🧮"

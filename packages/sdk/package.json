@@ -45,9 +45,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "@solana/web3.js": "^1.95.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^22.0.0",
     "tsup": "^8.0.0",

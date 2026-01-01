@@ -22,7 +22,7 @@ const windowIcons: Record<string, string> = {
   accounts: '📦',
   cheatcodes: '🔧',
   apiTester: '🔍',
-  accountManager: '👤',
+  accountManager: '📋',
   pdaCalculator: '🧮',
 };
 
