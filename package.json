@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build": "pnpm -r build",
+    "build:web": "pnpm --filter @surfman/sdk build && pnpm --filter @surfman/web-ui build",
     "dev": "pnpm -r dev",
     "clean": "pnpm -r clean && rm -rf node_modules",
     "test": "pnpm -r test",
