@@ -236,7 +236,7 @@ program.configureHelp({
     output += chalk.gray('💡 Tips:\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 55 commands grouped by module\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed command options\n');
-    output += chalk.gray('📖 Documentation: ') + chalk.cyan('https://github.com/your-repo/surfman\n');
+    output += chalk.gray('📖 Documentation: ') + chalk.cyan('https://github.com/ennea8/surfman\n');
 
     return output;
   },
