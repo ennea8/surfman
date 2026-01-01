@@ -1,9 +1,32 @@
 import React from 'react';
-import { WindowManager } from './WindowManager';
 import { Taskbar } from './Taskbar';
+import { WindowManager } from './WindowManager';
+import { DesktopIcon } from './DesktopIcon';
+import { useWindowStore } from '../store/windowStore';
 
 export const Desktop: React.FC = () => {
   const [startMenuOpen, setStartMenuOpen] = React.useState(false);
+  const { addWindow } = useWindowStore();
+
+  const openDesktopWindow = (
+    component: string,
+    title: string,
+    icon: string,
+    width: number = 700,
+    height: number = 500
+  ) => {
+    addWindow({
+      title,
+      component,
+      icon,
+      x: 100 + Math.random() * 100,
+      y: 100 + Math.random() * 100,
+      width,
+      height,
+      isMinimized: false,
+      isMaximized: false,
+    });
+  };
 
   return (
     <div
@@ -17,6 +40,33 @@ export const Desktop: React.FC = () => {
     >
       {/* Desktop Content */}
       <div style={{ paddingBottom: '48px' }}>
+        {/* Desktop Icons */}
+        <div
+          style={{
+            padding: '16px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '8px',
+            alignContent: 'flex-start',
+          }}
+        >
+          <DesktopIcon
+            icon="🔍"
+            label="API Tester"
+            onClick={() => openDesktopWindow('apiTester', 'API Tester', '🔍', 800, 600)}
+          />
+          <DesktopIcon
+            icon="👤"
+            label="Account Manager"
+            onClick={() => openDesktopWindow('accountManager', 'Account Manager', '👤', 650, 500)}
+          />
+          <DesktopIcon
+            icon="🧮"
+            label="PDA Calculator"
+            onClick={() => openDesktopWindow('pdaCalculator', 'PDA Calculator', '🧮', 600, 550)}
+          />
+        </div>
+
         <WindowManager />
       </div>
 

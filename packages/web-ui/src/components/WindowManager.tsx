@@ -4,17 +4,26 @@ import { CustomWindow } from './CustomWindow';
 import { NetworkWindowContent } from './windows/NetworkWindowContent';
 import { AccountsWindowContent } from './windows/AccountsWindowContent';
 import { CheatcodesWindowContent } from './windows/CheatcodesWindowContent';
+import { ApiTesterWindowContent } from './windows/ApiTesterWindowContent';
+import { AccountManagerWindowContent } from './windows/AccountManagerWindowContent';
+import { PdaCalculatorWindowContent } from './windows/PdaCalculatorWindowContent';
 
 const windowComponents: Record<string, React.FC<{ windowId: string }>> = {
   network: NetworkWindowContent,
   accounts: AccountsWindowContent,
   cheatcodes: CheatcodesWindowContent,
+  apiTester: ApiTesterWindowContent,
+  accountManager: AccountManagerWindowContent,
+  pdaCalculator: PdaCalculatorWindowContent,
 };
 
 const windowIcons: Record<string, string> = {
   network: '🌐',
   accounts: '📦',
   cheatcodes: '🔧',
+  apiTester: '🔍',
+  accountManager: '👤',
+  pdaCalculator: '🧮',
 };
 
 export const WindowManager: React.FC = () => {
