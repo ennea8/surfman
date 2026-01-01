@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "cd ../sdk && pnpm build",
     "build": "tsc -b && vite build && pnpm copy-to-cli",
     "copy-to-cli": "rm -rf ../cli/static && mkdir -p ../cli/static && cp -r dist/* ../cli/static/",
     "lint": "eslint .",
