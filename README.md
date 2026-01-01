@@ -91,7 +91,7 @@ npm install -g surfman
 
 ### Install SDK in your project
 ```bash
-npm install surfman-sdk
+npm install @surfman/sdk
 ```
 
 ## Quick Start
@@ -121,7 +121,7 @@ surfman set-program-authority --program-id <ID> --new-authority <ADDRESS>
 
 ### SDK Usage
 ```typescript
-import { Surfman } from 'surfman-sdk';
+import { Surfman } from '@surfman/sdk';
 
 const client = new Surfman('http://localhost:8899');
 

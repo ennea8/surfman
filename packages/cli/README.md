@@ -235,11 +235,11 @@ export SURFMAN_RPC_URL=http://localhost:8899
 For programmatic usage in TypeScript/JavaScript:
 
 ```bash
-npm install surfman-sdk
+npm install @surfman/sdk
 ```
 
 ```typescript
-import { Surfman } from 'surfman-sdk';
+import { Surfman } from '@surfman/sdk';
 
 const client = new Surfman('http://localhost:8899');
 await client.cheatcodes.timeTravel({ relativeEpoch: 1 });
@@ -249,7 +249,7 @@ await client.cheatcodes.timeTravel({ relativeEpoch: 1 });
 
 - [SurfPool Documentation](https://docs.surfpool.run/) - Official SurfPool docs
 - [GitHub Repository](https://github.com/ennea8/surfman)
-- [SDK Package](https://www.npmjs.com/package/surfman-sdk)
+- [SDK Package](https://www.npmjs.com/package/@surfman/sdk)
 - [Report Issues](https://github.com/ennea8/surfman/issues)
 
 ## Help

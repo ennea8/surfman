@@ -1,8 +1,8 @@
-# surfman-sdk
+# @surfman/sdk
 
 TypeScript SDK for SurfPool RPC API interaction - A powerful toolkit for Solana local development and testing.
 
-[![npm version](https://img.shields.io/npm/v/surfman-sdk.svg)](https://www.npmjs.com/package/surfman-sdk)
+[![npm version](https://img.shields.io/npm/v/@surfman/sdk.svg)](https://www.npmjs.com/package/@surfman/sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > 📖 **[SurfPool Documentation](https://docs.surfpool.run/)** - Learn more about SurfPool's local development environment
@@ -19,13 +19,13 @@ TypeScript SDK for SurfPool RPC API interaction - A powerful toolkit for Solana 
 ## Installation
 
 ```bash
-npm install surfman-sdk
+npm install @surfman/sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { Surfman } from 'surfman-sdk';
+import { Surfman } from '@surfman/sdk';
 
 // Initialize client
 const client = new Surfman('http://localhost:8899');
@@ -220,7 +220,7 @@ import {
   AccountInfo, 
   BlockInfo,
   TransactionResponse 
-} from 'surfman-sdk';
+} from '@surfman/sdk';
 ```
 
 ## CLI Companion
