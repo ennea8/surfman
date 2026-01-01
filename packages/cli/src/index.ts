@@ -27,6 +27,10 @@ import { createMinimumLedgerSlotCommand } from './commands/network/minimum-ledge
 import { createGetSignatureStatusesCommand } from './commands/network/get-signature-statuses';
 import { createSimulateTransactionCommand } from './commands/network/simulate-transaction';
 import { createGetRecentPerformanceSamplesCommand } from './commands/network/get-recent-performance-samples';
+import { createGetInflationRewardCommand } from './commands/network/get-inflation-reward';
+import { createGetMaxRetransmitSlotCommand } from './commands/network/get-max-retransmit-slot';
+import { createGetMaxShredInsertSlotCommand } from './commands/network/get-max-shred-insert-slot';
+import { createGetStakeMinimumDelegationCommand } from './commands/network/get-stake-minimum-delegation';
 import { createGetAccountInfoCommand } from './commands/accounts/get-account-info';
 import { createGetMultipleAccountsCommand } from './commands/accounts/get-multiple-accounts';
 import { createGetBlockCommitmentCommand } from './commands/accounts/get-block-commitment';
@@ -69,7 +73,7 @@ if (isFullHelp) {
   console.log(`  ${chalk.yellow('get-token-supply')}             Get total token supply`);
   console.log(`  ${chalk.yellow('get-block-commitment')}         Get block commitment data\n`);
   
-  console.log(chalk.bold.blue('🌐 Network Operations (18 commands):\n'));
+  console.log(chalk.bold.blue('🌐 Network Operations (22 commands):\n'));
   console.log(chalk.dim('  Block Queries:'));
   console.log(`  ${chalk.blue('get-latest-blockhash')}         Get the latest blockhash`);
   console.log(`  ${chalk.blue('get-block')}                     Get block information by slot`);
@@ -77,7 +81,9 @@ if (isFullHelp) {
   console.log(`  ${chalk.blue('get-blocks')}                    Get list of confirmed blocks`);
   console.log(`  ${chalk.blue('get-blocks-with-limit')}         Get blocks with limit`);
   console.log(`  ${chalk.blue('get-first-available-block')}     Get first available block`);
-  console.log(`  ${chalk.blue('minimum-ledger-slot')}           Get minimum ledger slot\n`);
+  console.log(`  ${chalk.blue('minimum-ledger-slot')}           Get minimum ledger slot`);
+  console.log(`  ${chalk.blue('get-max-retransmit-slot')}       Get max retransmit slot`);
+  console.log(`  ${chalk.blue('get-max-shred-insert-slot')}     Get max shred insert slot\n`);
   
   console.log(chalk.dim('  Transaction Operations:'));
   console.log(`  ${chalk.blue('get-transaction')}               Get transaction details`);
@@ -92,7 +98,9 @@ if (isFullHelp) {
   console.log(`  ${chalk.blue('get-recent-prioritization-fees')} Get recent priority fees`);
   console.log(`  ${chalk.blue('get-cluster-nodes')}             Get cluster node information`);
   console.log(`  ${chalk.blue('get-recent-performance-samples')} Get performance samples`);
-  console.log(`  ${chalk.blue('request-airdrop')}               Request lamports airdrop\n`);
+  console.log(`  ${chalk.blue('request-airdrop')}               Request lamports airdrop`);
+  console.log(`  ${chalk.blue('get-inflation-reward')}          Get inflation rewards`);
+  console.log(`  ${chalk.blue('get-stake-minimum-delegation')}  Get min stake delegation\n`);
   
   console.log(chalk.bold.magenta('🔧 Testing & Development (22 commands):\n'));
   console.log(chalk.dim('  Time Control:'));
@@ -143,9 +151,9 @@ if (isFullHelp) {
   console.log(`  ${chalk.green('get-token-accounts-by-delegate')} Get delegated token accounts\n`);
   
   console.log(chalk.bold.cyan('📊 Summary:\n'));
-  console.log(`  Total Commands: ${chalk.bold('51')}`);
+  console.log(`  Total Commands: ${chalk.bold('55')}`);
   console.log(`  Account Queries: ${chalk.yellow('5')}`);
-  console.log(`  Network Operations: ${chalk.blue('18')}`);
+  console.log(`  Network Operations: ${chalk.blue('22')}`);
   console.log(`  Testing & Development: ${chalk.magenta('22')}`);
   console.log(`  Scan & Analytics: ${chalk.green('6')}\n`);
   
@@ -208,7 +216,7 @@ program.configureHelp({
     output += `  ${chalk.blue('get-cluster-nodes')}             Get cluster node info\n\n`;
 
     // Testing & Development (Cheatcodes)
-    output += chalk.bold.magenta('🔧 Testing & Development:\n');
+    output += chalk.bold.magenta('🔧 Testing & Development(Cheatcodes):\n');
     output += `  ${chalk.magenta('time-travel')}                  Time travel to epoch/slot\n`;
     output += `  ${chalk.magenta('pause-clock')}                  Pause network clock\n`;
     output += `  ${chalk.magenta('resume-clock')}                 Resume network clock\n`;
@@ -226,7 +234,7 @@ program.configureHelp({
 
     // Footer
     output += chalk.gray('💡 Tips:\n');
-    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 38 commands grouped by module\n');
+    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 55 commands grouped by module\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed command options\n');
     output += chalk.gray('📖 Documentation: ') + chalk.cyan('https://github.com/your-repo/surfman\n');
 
@@ -289,6 +297,10 @@ program.addCommand(createMinimumLedgerSlotCommand());
 program.addCommand(createGetSignatureStatusesCommand());
 program.addCommand(createSimulateTransactionCommand());
 program.addCommand(createGetRecentPerformanceSamplesCommand());
+program.addCommand(createGetInflationRewardCommand());
+program.addCommand(createGetMaxRetransmitSlotCommand());
+program.addCommand(createGetMaxShredInsertSlotCommand());
+program.addCommand(createGetStakeMinimumDelegationCommand());
 
 // Accounts
 program.addCommand(createGetAccountInfoCommand());

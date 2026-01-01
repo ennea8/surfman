@@ -24,6 +24,10 @@ import {
   getRecentPrioritizationFees,
   type PrioritizationFee,
 } from './getRecentPrioritizationFees';
+import { getInflationReward } from './getInflationReward';
+import { getMaxRetransmitSlot } from './getMaxRetransmitSlot';
+import { getMaxShredInsertSlot } from './getMaxShredInsertSlot';
+import { getStakeMinimumDelegation } from './getStakeMinimumDelegation';
 import type {
   BlockhashResult,
   Block,
@@ -36,6 +40,7 @@ import type {
   SimulateTransactionResult,
   ClusterNode,
   PerformanceSample,
+  InflationReward,
 } from '../../types';
 
 export class NetworkModule {
@@ -154,5 +159,26 @@ export class NetworkModule {
     addresses?: string[]
   ): Promise<PrioritizationFee[]> {
     return getRecentPrioritizationFees(this.client, addresses);
+  }
+
+  async getInflationReward(
+    addresses: string[],
+    config?: { epoch?: number; commitment?: string; minContextSlot?: number }
+  ): Promise<(InflationReward | null)[]> {
+    return getInflationReward(this.client, addresses, config);
+  }
+
+  async getMaxRetransmitSlot(): Promise<number> {
+    return getMaxRetransmitSlot(this.client);
+  }
+
+  async getMaxShredInsertSlot(): Promise<number> {
+    return getMaxShredInsertSlot(this.client);
+  }
+
+  async getStakeMinimumDelegation(
+    config?: { commitment?: string; minContextSlot?: number }
+  ): Promise<number> {
+    return getStakeMinimumDelegation(this.client, config);
   }
 }

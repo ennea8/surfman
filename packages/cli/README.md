@@ -9,9 +9,9 @@ CLI tool for SurfPool RPC API interaction - Command-line interface for Solana lo
 
 ## Features
 
-- ⚡ **51 Commands**: Complete CLI coverage of all Surfpool APIs
+- ⚡ **55 Commands**: Complete CLI coverage of all Surfpool APIs
 - 🔧 **Testing Tools**: Time travel, account manipulation, profiling, snapshots
-- 🌐 **Network Queries**: Blocks, transactions, fees, cluster info
+- 🌐 **Network Queries**: Blocks, transactions, fees, cluster info, staking
 - 📦 **Account Tools**: Query accounts, tokens, balances
 - 📊 **Analytics**: Scan program accounts, find largest holders
 - 🎨 **Beautiful Output**: Colorful, well-formatted terminal output
@@ -101,7 +101,7 @@ surfman set-supply --total 1000000000
 surfman get-surfnet-info
 ```
 
-### 🌐 Network Operations (18 commands)
+### 🌐 Network Operations (22 commands)
 
 **Block Queries:**
 ```bash
@@ -112,6 +112,8 @@ surfman get-blocks --start-slot 1000 --end-slot 2000
 surfman get-blocks-with-limit --start-slot 1000 --limit 100
 surfman get-first-available-block
 surfman minimum-ledger-slot
+surfman get-max-retransmit-slot
+surfman get-max-shred-insert-slot
 ```
 
 **Transaction Operations:**
@@ -131,6 +133,8 @@ surfman get-recent-prioritization-fees
 surfman get-cluster-nodes
 surfman get-recent-performance-samples
 surfman request-airdrop --pubkey <ADDR> --amount 1
+surfman get-inflation-reward --addresses <ADDR1,ADDR2>
+surfman get-stake-minimum-delegation
 ```
 
 ### 📦 Account Queries (5 commands)
