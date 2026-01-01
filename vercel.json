@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm build:web",
+  "buildCommand": "npm run build:web",
   "installCommand": "pnpm install",
   "framework": null,
   "outputDirectory": "packages/web-ui/dist"
