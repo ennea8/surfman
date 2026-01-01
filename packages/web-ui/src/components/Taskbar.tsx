@@ -14,14 +14,17 @@ interface TaskbarProps {
 }
 
 export const Taskbar: React.FC<TaskbarProps> = ({ startMenuOpen, setStartMenuOpen }) => {
-  const { windows, addWindow, minimizeWindow } = useWindowStore();
+  const { windows, addWindow, restoreWindow, minimizeWindow, focusWindow } = useWindowStore();
   const { networkType, setNetworkType } = useNetworkStore();
 
-  const openWindow = (component: string, title: string) => {
-    console.log('Opening window:', { component, title });
+  const minimizedWindows = windows.filter(w => w.isMinimized);
+
+  const openWindow = (type: 'network' | 'accounts' | 'cheatcodes', title: string, icon?: string) => {
+    console.log('Opening window:', { type, title, icon });
     const newWindow = {
       title,
-      component,
+      component: type,
+      icon,
       x: 100 + windows.length * 20,
       y: 100 + windows.length * 20,
       width: 600,
@@ -74,21 +77,21 @@ export const Taskbar: React.FC<TaskbarProps> = ({ startMenuOpen, setStartMenuOpe
               >
                 <MenuListItem onClick={(e) => {
                   e.stopPropagation();
-                  openWindow('network', 'Network Operations');
+                  openWindow('network', 'Network Operations', '🌐');
                 }}>
                   <span style={{ marginRight: 8 }}>🌐</span>
                   Network
                 </MenuListItem>
                 <MenuListItem onClick={(e) => {
                   e.stopPropagation();
-                  openWindow('accounts', 'Account Manager');
+                  openWindow('accounts', 'Account Manager', '📦');
                 }}>
                   <span style={{ marginRight: 8 }}>📦</span>
                   Accounts
                 </MenuListItem>
                 <MenuListItem onClick={(e) => {
                   e.stopPropagation();
-                  openWindow('cheatcodes', 'Cheatcodes');
+                  openWindow('cheatcodes', 'Cheatcodes', '🔧');
                 }}>
                   <span style={{ marginRight: 8 }}>🔧</span>
                   Cheatcodes
@@ -116,7 +119,27 @@ export const Taskbar: React.FC<TaskbarProps> = ({ startMenuOpen, setStartMenuOpe
               ))}
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {/* Minimized Windows */}
+          <div style={{ display: 'flex', gap: '4px', marginLeft: '8px' }}>
+            {minimizedWindows.map((win) => (
+              <Button
+                key={win.id}
+                onClick={() => {
+                  restoreWindow(win.id);
+                  focusWindow(win.id);
+                }}
+                style={{ 
+                  minWidth: '120px',
+                  fontSize: '11px',
+                  padding: '2px 8px',
+                }}
+              >
+                {win.icon || '📄'} {win.title}
+              </Button>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
             <select
               value={networkType}
               onChange={(e) => {
