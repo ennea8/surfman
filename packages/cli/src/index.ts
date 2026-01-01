@@ -55,6 +55,7 @@ import { createGetStreamedAccountsCommand } from './commands/cheatcodes/get-stre
 import { createGetSurfnetInfoCommand } from './commands/cheatcodes/get-surfnet-info';
 import { createWriteProgramCommand } from './commands/cheatcodes/write-program';
 import { createRegisterScenarioCommand } from './commands/cheatcodes/register-scenario';
+import { createUiCommand } from './commands/ui';
 
 const program = new Command();
 
@@ -108,6 +109,9 @@ if (isFullHelp) {
   console.log(`  ${chalk.magenta('pause-clock')}                  Pause the network clock`);
   console.log(`  ${chalk.magenta('resume-clock')}                 Resume the network clock\n`);
   
+  console.log(chalk.bold.cyan('💻 Web Interface (1 command):\n'));
+  console.log(`  ${chalk.cyan('ui')}                             Start Windows 95-style Web UI\n`);
+  
   console.log(chalk.dim('  Account Manipulation:'));
   console.log(`  ${chalk.magenta('set-account')}                  Modify account data/lamports/owner`);
   console.log(`  ${chalk.magenta('set-token-account')}            Update token account properties`);
@@ -151,11 +155,12 @@ if (isFullHelp) {
   console.log(`  ${chalk.green('get-token-accounts-by-delegate')} Get delegated token accounts\n`);
   
   console.log(chalk.bold.cyan('📊 Summary:\n'));
-  console.log(`  Total Commands: ${chalk.bold('55')}`);
+  console.log(`  Total Commands: ${chalk.bold('56')}`);
   console.log(`  Account Queries: ${chalk.yellow('5')}`);
   console.log(`  Network Operations: ${chalk.blue('22')}`);
   console.log(`  Testing & Development: ${chalk.magenta('22')}`);
-  console.log(`  Scan & Analytics: ${chalk.green('6')}\n`);
+  console.log(`  Scan & Analytics: ${chalk.green('6')}`);
+  console.log(`  Web Interface: ${chalk.cyan('1')}\n`);
   
   console.log(chalk.gray('💡 Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed options\n'));
   process.exit(0);
@@ -226,6 +231,10 @@ program.configureHelp({
     output += `  ${chalk.magenta('reset-network')}                Reset entire network\n`;
     output += `  ${chalk.magenta('set-program-authority')}        Set program authority\n\n`;
 
+    // Web Interface
+    output += chalk.bold.cyan('💻 Web Interface:\n');
+    output += `  ${chalk.cyan('ui')}                             Start Windows 95-style Web UI\n\n`;
+
     // Additional Commands
     output += chalk.bold.gray('📋 Additional Commands:\n');
     output += chalk.gray('  get-blocks, get-block-time, is-blockhash-valid,\n');
@@ -234,7 +243,7 @@ program.configureHelp({
 
     // Footer
     output += chalk.gray('💡 Tips:\n');
-    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 55 commands grouped by module\n');
+    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 56 commands grouped by module\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed command options\n');
     output += chalk.gray('📖 Documentation: ') + chalk.cyan('https://github.com/ennea8/surfman\n');
 
@@ -316,5 +325,8 @@ program.addCommand(createGetSupplyCommand());
 program.addCommand(createGetTokenLargestAccountsCommand());
 program.addCommand(createGetTokenAccountsByOwnerCommand());
 program.addCommand(createGetTokenAccountsByDelegateCommand());
+
+// Web UI
+program.addCommand(createUiCommand());
 
 program.parse();

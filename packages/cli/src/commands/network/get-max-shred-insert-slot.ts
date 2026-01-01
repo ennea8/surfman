@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { Surfman } from 'surfman-sdk';
+import { Surfman } from '@surfman/sdk';
 import chalk from 'chalk';
 
 export function createGetMaxShredInsertSlotCommand(): Command {

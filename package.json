@@ -11,7 +11,7 @@
     "lint": "pnpm -r lint",
     "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
     "cli": "pnpm tsx packages/cli/src/index.ts",
-    "publish:packages": "pnpm build && pnpm -r --filter='./packages/*' publish",
+    "publish:packages": "pnpm build && pnpm -r --filter='./packages/*' --filter='!@surfman/web-ui' publish --access public",
     "version:patch": "pnpm -r --filter='./packages/*' exec pnpm version patch",
     "version:minor": "pnpm -r --filter='./packages/*' exec pnpm version minor",
     "version:major": "pnpm -r --filter='./packages/*' exec pnpm version major"
