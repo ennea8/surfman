@@ -1,5 +1,6 @@
 import { Command } from 'commander';
 import { Surfman } from '@surfman/sdk';
+import type { ExportSnapshotConfig, SnapshotScope } from '@surfman/sdk';
 import { logger } from '../../utils/logger';
 import { writeFileSync } from 'fs';
 
@@ -11,12 +12,16 @@ export function createExportSnapshotCommand(): Command {
     .option('--include-programs', 'Include program accounts')
     .option('--include-accounts <accounts...>', 'Specific accounts to include')
     .option('--exclude-accounts <accounts...>', 'Specific accounts to exclude')
+    .option('--scope <scope>', "Snapshot scope: 'network' or 'preTransaction'", 'network')
+    .option('--pre-transaction <signature>', 'Transaction signature when using preTransaction scope')
     .option('--rpc <url>', 'RPC URL', 'http://localhost:8899')
     .action(async (options) => {
       try {
         const client = new Surfman(options.rpc);
 
-        const config: any = {};
+        const config: ExportSnapshotConfig = {
+          scope: parseScopeOption(options.scope, options.preTransaction),
+        };
 
         if (options.includeParsed) {
           config.includeParsedAccounts = true;
@@ -51,4 +56,15 @@ export function createExportSnapshotCommand(): Command {
     });
 
   return command;
+}
+
+function parseScopeOption(scopeOption: string, preTransactionSignature?: string): SnapshotScope {
+  if (scopeOption === 'preTransaction') {
+    if (!preTransactionSignature) {
+      throw new Error('When using preTransaction scope you must provide --pre-transaction <signature>');
+    }
+    return { preTransaction: preTransactionSignature };
+  }
+
+  return 'network';
 }

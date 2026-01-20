@@ -91,6 +91,8 @@ export interface Idl {
   state?: any;
 }
 
+export type SnapshotScope = 'network' | { preTransaction: string };
+
 export interface ExportSnapshotConfig {
   includeParsedAccounts?: boolean;
   filter?: {
@@ -98,10 +100,7 @@ export interface ExportSnapshotConfig {
     includeAccounts?: string[];
     excludeAccounts?: string[];
   };
-  scope?: {
-    network?: boolean;
-    preTransaction?: string;
-  };
+  scope?: SnapshotScope;
 }
 
 export interface AccountSnapshot {
