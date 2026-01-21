@@ -114,7 +114,7 @@ if (isFullHelp) {
   console.log(`  ${chalk.magenta('resume-clock')}                 Resume the network clock\n`);
   
   console.log(chalk.bold.cyan('💻 Web Interface (1 command):\n'));
-  console.log(`  ${chalk.cyan('ui')}                             Start Windows 95-style Web UI\n`);
+  console.log(`  ${chalk.cyan('ui')}                              Start Windows 95-style Web UI\n`);
   
   console.log(chalk.dim('  Account Manipulation:'));
   console.log(`  ${chalk.magenta('set-account')}                  Modify account data/lamports/owner`);
@@ -149,13 +149,13 @@ if (isFullHelp) {
   
   console.log(chalk.bold.green('📊 Scan & Analytics (6 commands):\n'));
   console.log(chalk.dim('  Batch Queries:'));
-  console.log(`  ${chalk.green('get-program-accounts')}          Get all accounts owned by a program`);
-  console.log(`  ${chalk.green('get-largest-accounts')}          Get top 20 accounts by balance`);
-  console.log(`  ${chalk.green('get-supply')}                    Get network supply information\n`);
+  console.log(`  ${chalk.green('get-program-accounts')}           Get all accounts owned by a program`);
+  console.log(`  ${chalk.green('get-largest-accounts')}           Get top 20 accounts by balance`);
+  console.log(`  ${chalk.green('get-supply')}                     Get network supply information\n`);
   
   console.log(chalk.dim('  Token Distribution:'));
-  console.log(`  ${chalk.green('get-token-largest-accounts')}    Get largest token holders`);
-  console.log(`  ${chalk.green('get-token-accounts-by-owner')}   Get token accounts by owner`);
+  console.log(`  ${chalk.green('get-token-largest-accounts')}     Get largest token holders`);
+  console.log(`  ${chalk.green('get-token-accounts-by-owner')}    Get token accounts by owner`);
   console.log(`  ${chalk.green('get-token-accounts-by-delegate')} Get delegated token accounts\n`);
   
   console.log(chalk.bold.cyan('📊 Summary:\n'));
@@ -203,9 +203,9 @@ program.configureHelp({
 
     // Frequently Used Commands
     output += chalk.bold.green('⭐ Frequently Used:\n');
-    output += `  ${chalk.cyan('get-account-info')}             Get account information\n`;
-    output += `  ${chalk.cyan('time-travel')}                  Time travel for testing\n`;
     output += `  ${chalk.cyan('now')}                          Show current slot/epoch/time\n`;
+    output += `  ${chalk.cyan('time-travel')}                  Time travel for testing\n`;
+    output += `  ${chalk.cyan('get-account-info')}             Get account information\n`;
     output += `  ${chalk.cyan('set-account')}                  Modify account data\n`;
     output += `  ${chalk.cyan('export-snapshot')}              Export account snapshots\n`;
     output += `  ${chalk.cyan('import-snapshot')}              Apply account snapshots\n`;
@@ -243,7 +243,7 @@ program.configureHelp({
     output += `  ${chalk.magenta('reset-network')}                Reset entire network\n`;
     output += `  ${chalk.magenta('set-program-authority')}        Set program authority\n`;
     output += `  ${chalk.magenta('export-snapshot')}              Export account snapshots\n`;
-    output += `  ${chalk.magenta('import-snapshot')}             Apply account snapshots\n\n`;
+    output += `  ${chalk.magenta('import-snapshot')}              Apply account snapshots\n\n`;
 
     // Web Interface
     output += chalk.bold.cyan('💻 Web Interface:\n');
@@ -260,7 +260,7 @@ program.configureHelp({
     output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 58 commands grouped by module\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman <command> -h') + chalk.gray(' for detailed command options\n');
     output +=
-      chalk.gray('   Contribute bugs/features/PRs: ') +
+      chalk.gray('🐛 Contributions welcome(bugs/features/PRs):') +
       chalk.cyan('https://github.com/ennea8/surfman\n');
 
     return output;

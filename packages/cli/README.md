@@ -21,29 +21,29 @@ CLI tool for SurfPool RPC API interaction - Command-line interface for Solana lo
 
 ```bash
 npm install -g surfman
+ or
+pnpm install -g surfman
+ or
+yarn global add surfman
 ```
 
 ## Quick Start
 
 ```bash
-# Check version
-surfman --version
 
-# Show help
+surfman --version # Check version
 surfman -h              # Frequently used commands
 surfman --help          # Complete command list
 
-# Time travel (testing)
-surfman time-travel --relative +1w
+surfman now # Show current slot/epoch/time
+surfman time-travel --relative +1w # Time travel (testing)
+surfman export-snapshot --output snapshot.json # Export snapshot
+surfman import-snapshot --input snapshot.json # Import snapshot
+surfman get-account-info --pubkey <ADDRESS> # Get account info
+surfman set-account --pubkey <ADDR> --owner <OWNER> --lamports 1000000 # Set account
+surfman request-airdrop --pubkey <ADDRESS> --amount 10 # Request airdrop
 
-# Request airdrop
-surfman request-airdrop --pubkey <ADDRESS> --amount 10
 
-# Get account info
-surfman get-account-info --pubkey <ADDRESS>
-
-# Get latest blockhash
-surfman get-latest-blockhash
 ```
 
 ## Command Categories
@@ -224,12 +224,6 @@ Most commands support:
 - `--commitment <level>` - Commitment level (finalized, confirmed, processed)
 - `--encoding <type>` - Data encoding (base58, base64, jsonParsed)
 
-## Configuration
-
-Set default RPC endpoint:
-```bash
-export SURFMAN_RPC_URL=http://localhost:8899
-```
 
 ## SDK Package
 
@@ -263,7 +257,7 @@ surfman -h
 surfman --help
 
 # Command-specific help
-surfman <command> --help
+surfman <command> -h
 ```
 
 ## License
