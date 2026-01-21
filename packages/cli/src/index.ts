@@ -1,5 +1,6 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
+import packageJson from '../package.json';
 import { createTimeTravelCommand } from './commands/cheatcodes/time-travel';
 import { createSetAccountCommand } from './commands/cheatcodes/set-account';
 import { createSetProgramAuthorityCommand } from './commands/cheatcodes/set-program-authority';
@@ -163,14 +164,14 @@ if (isFullHelp) {
   console.log(`  Scan & Analytics: ${chalk.green('6')}`);
   console.log(`  Web Interface: ${chalk.cyan('1')}\n`);
   
-  console.log(chalk.gray('💡 Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed options\n'));
+  console.log(chalk.gray('💡 Use ') + chalk.cyan('surfman <command> -h') + chalk.gray(' for detailed options\n'));
   process.exit(0);
 }
 
 program
   .name('surfman')
   .description('CLI tool for SurfPool RPC API interaction')
-  .version('0.1.0');
+  .version(packageJson.version);
 
 // Custom help configuration
 program.configureHelp({
@@ -196,12 +197,12 @@ program.configureHelp({
 
     // Frequently Used Commands
     output += chalk.bold.green('⭐ Frequently Used:\n');
-    output += `  ${chalk.cyan('get-account-info')}             ${chalk.gray('Get account information')}\n`;
-    output += `  ${chalk.cyan('time-travel')}                  ${chalk.gray('Time travel for testing')}\n`;
-    output += `  ${chalk.cyan('set-account')}                  ${chalk.gray('Modify account data')}\n`;
-    output += `  ${chalk.cyan('export-snapshot')}              ${chalk.gray('Export account snapshots')}\n`;
-    output += `  ${chalk.cyan('import-snapshot')}              ${chalk.gray('Apply account snapshots')}\n`;
-    output += `  ${chalk.cyan('set-program-authority')}        ${chalk.gray('Set program authority')}\n\n`;
+    output += `  ${chalk.cyan('get-account-info')}             Get account information\n`;
+    output += `  ${chalk.cyan('time-travel')}                  Time travel for testing\n`;
+    output += `  ${chalk.cyan('set-account')}                  Modify account data\n`;
+    output += `  ${chalk.cyan('export-snapshot')}              Export account snapshots\n`;
+    output += `  ${chalk.cyan('import-snapshot')}              Apply account snapshots\n`;
+    output += `  ${chalk.cyan('set-program-authority')}        Set program authority\n\n`;
 
     // Account Queries
     output += chalk.bold.yellow('📦 Account Queries:\n');
@@ -248,8 +249,7 @@ program.configureHelp({
     // Footer
     output += chalk.gray('💡 Tips:\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 56 commands grouped by module\n');
-    output += chalk.gray('   Use ') + chalk.cyan('surfman <command> --help') + chalk.gray(' for detailed command options\n');
-    output += chalk.gray('📖 Documentation: ') + chalk.cyan('https://github.com/ennea8/surfman\n');
+    output += chalk.gray('   Use ') + chalk.cyan('surfman <command> -h') + chalk.gray(' for detailed command options\n');
 
     return output;
   },
