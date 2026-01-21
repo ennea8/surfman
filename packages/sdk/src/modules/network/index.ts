@@ -28,6 +28,7 @@ import { getInflationReward } from './getInflationReward';
 import { getMaxRetransmitSlot } from './getMaxRetransmitSlot';
 import { getMaxShredInsertSlot } from './getMaxShredInsertSlot';
 import { getStakeMinimumDelegation } from './getStakeMinimumDelegation';
+import { getEpochInfo } from './getEpochInfo';
 import type {
   BlockhashResult,
   Block,
@@ -41,6 +42,7 @@ import type {
   ClusterNode,
   PerformanceSample,
   InflationReward,
+  EpochInfo,
 } from '../../types';
 
 export class NetworkModule {
@@ -58,6 +60,10 @@ export class NetworkModule {
     config?: BlockConfig
   ): Promise<Block | null> {
     return getBlock(this.client, slot, config);
+  }
+
+  async getEpochInfo(): Promise<EpochInfo> {
+    return getEpochInfo(this.client);
   }
 
   async getBlockTime(slot: number): Promise<number | null> {

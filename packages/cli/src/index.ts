@@ -32,6 +32,7 @@ import { createGetInflationRewardCommand } from './commands/network/get-inflatio
 import { createGetMaxRetransmitSlotCommand } from './commands/network/get-max-retransmit-slot';
 import { createGetMaxShredInsertSlotCommand } from './commands/network/get-max-shred-insert-slot';
 import { createGetStakeMinimumDelegationCommand } from './commands/network/get-stake-minimum-delegation';
+import { createNowCommand } from './commands/network/now';
 import { createGetAccountInfoCommand } from './commands/accounts/get-account-info';
 import { createGetMultipleAccountsCommand } from './commands/accounts/get-multiple-accounts';
 import { createGetBlockCommitmentCommand } from './commands/accounts/get-block-commitment';
@@ -76,10 +77,11 @@ if (isFullHelp) {
   console.log(`  ${chalk.yellow('get-token-supply')}             Get total token supply`);
   console.log(`  ${chalk.yellow('get-block-commitment')}         Get block commitment data\n`);
   
-  console.log(chalk.bold.blue('🌐 Network Operations (22 commands):\n'));
+  console.log(chalk.bold.blue('🌐 Network Operations (23 commands):\n'));
   console.log(chalk.dim('  Block Queries:'));
   console.log(`  ${chalk.blue('get-latest-blockhash')}         Get the latest blockhash`);
   console.log(`  ${chalk.blue('get-block')}                     Get block information by slot`);
+  console.log(`  ${chalk.blue('now')}                           Show current slot/epoch/time`);
   console.log(`  ${chalk.blue('get-block-time')}                Get block production time`);
   console.log(`  ${chalk.blue('get-blocks')}                    Get list of confirmed blocks`);
   console.log(`  ${chalk.blue('get-blocks-with-limit')}         Get blocks with limit`);
@@ -157,9 +159,9 @@ if (isFullHelp) {
   console.log(`  ${chalk.green('get-token-accounts-by-delegate')} Get delegated token accounts\n`);
   
   console.log(chalk.bold.cyan('📊 Summary:\n'));
-  console.log(`  Total Commands: ${chalk.bold('56')}`);
+  console.log(`  Total Commands: ${chalk.bold('57')}`);
   console.log(`  Account Queries: ${chalk.yellow('5')}`);
-  console.log(`  Network Operations: ${chalk.blue('22')}`);
+  console.log(`  Network Operations: ${chalk.blue('23')}`);
   console.log(`  Testing & Development: ${chalk.magenta('22')}`);
   console.log(`  Scan & Analytics: ${chalk.green('6')}`);
   console.log(`  Web Interface: ${chalk.cyan('1')}\n`);
@@ -203,6 +205,7 @@ program.configureHelp({
     output += chalk.bold.green('⭐ Frequently Used:\n');
     output += `  ${chalk.cyan('get-account-info')}             Get account information\n`;
     output += `  ${chalk.cyan('time-travel')}                  Time travel for testing\n`;
+    output += `  ${chalk.cyan('now')}                          Show current slot/epoch/time\n`;
     output += `  ${chalk.cyan('set-account')}                  Modify account data\n`;
     output += `  ${chalk.cyan('export-snapshot')}              Export account snapshots\n`;
     output += `  ${chalk.cyan('import-snapshot')}              Apply account snapshots\n`;
@@ -220,6 +223,8 @@ program.configureHelp({
     output += chalk.bold.blue('🌐 Network Operations:\n');
     output += `  ${chalk.blue('get-latest-blockhash')}          Get the latest blockhash\n`;
     output += `  ${chalk.blue('get-block')}                     Get block by slot\n`;
+    output += `  ${chalk.blue('now')}                           Show current slot/epoch/time\n`;
+    output += `  ${chalk.blue('get-block-time')}                Get block production time\n`;
     output += `  ${chalk.blue('get-transaction')}               Get transaction details\n`;
     output += `  ${chalk.blue('send-transaction')}              Send a signed transaction\n`;
     output += `  ${chalk.blue('simulate-transaction')}          Simulate transaction execution\n`;
@@ -252,7 +257,7 @@ program.configureHelp({
 
     // Footer
     output += chalk.gray('💡 Tips:\n');
-    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 56 commands grouped by module\n');
+    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 58 commands grouped by module\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman <command> -h') + chalk.gray(' for detailed command options\n');
     output +=
       chalk.gray('   Contribute bugs/features/PRs: ') +
@@ -322,6 +327,7 @@ program.addCommand(createGetInflationRewardCommand());
 program.addCommand(createGetMaxRetransmitSlotCommand());
 program.addCommand(createGetMaxShredInsertSlotCommand());
 program.addCommand(createGetStakeMinimumDelegationCommand());
+program.addCommand(createNowCommand());
 
 // Accounts
 program.addCommand(createGetAccountInfoCommand());

@@ -22,6 +22,15 @@ export interface Block {
   blockHeight?: number | null;
 }
 
+export interface EpochInfo {
+  absoluteSlot: number;
+  blockHeight: number | null;
+  epoch: number;
+  slotIndex: number;
+  slotsInEpoch: number;
+  transactionCount: number | null;
+}
+
 export interface TransactionConfig {
   encoding?: 'json' | 'jsonParsed' | 'base58' | 'base64';
   commitment?: string;
