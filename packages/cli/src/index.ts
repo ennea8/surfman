@@ -165,6 +165,10 @@ if (isFullHelp) {
   console.log(`  Web Interface: ${chalk.cyan('1')}\n`);
   
   console.log(chalk.gray('💡 Use ') + chalk.cyan('surfman <command> -h') + chalk.gray(' for detailed options\n'));
+  console.log(
+    chalk.gray('🐛 Contributions welcome: ') +
+      chalk.cyan('https://github.com/ennea8/surfman (bugs, features, PRs)\n')
+  );
   process.exit(0);
 }
 
@@ -250,6 +254,9 @@ program.configureHelp({
     output += chalk.gray('💡 Tips:\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 56 commands grouped by module\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman <command> -h') + chalk.gray(' for detailed command options\n');
+    output +=
+      chalk.gray('   Contribute bugs/features/PRs: ') +
+      chalk.cyan('https://github.com/ennea8/surfman\n');
 
     return output;
   },
