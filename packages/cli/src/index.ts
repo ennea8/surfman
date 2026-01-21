@@ -199,8 +199,8 @@ program.configureHelp({
     output += `  ${chalk.cyan('get-account-info')}             ${chalk.gray('Get account information')}\n`;
     output += `  ${chalk.cyan('time-travel')}                  ${chalk.gray('Time travel for testing')}\n`;
     output += `  ${chalk.cyan('set-account')}                  ${chalk.gray('Modify account data')}\n`;
-    output += `  ${chalk.cyan('export-snapshot')}             ${chalk.gray('Export account snapshots')}\n`;
-    output += `  ${chalk.cyan('import-snapshot')}             ${chalk.gray('Apply account snapshots')}\n`;
+    output += `  ${chalk.cyan('export-snapshot')}              ${chalk.gray('Export account snapshots')}\n`;
+    output += `  ${chalk.cyan('import-snapshot')}              ${chalk.gray('Apply account snapshots')}\n`;
     output += `  ${chalk.cyan('set-program-authority')}        ${chalk.gray('Set program authority')}\n\n`;
 
     // Account Queries
@@ -213,7 +213,7 @@ program.configureHelp({
 
     // Network Operations
     output += chalk.bold.blue('🌐 Network Operations:\n');
-    output += `  ${chalk.blue('get-latest-blockhash')}         Get the latest blockhash\n`;
+    output += `  ${chalk.blue('get-latest-blockhash')}          Get the latest blockhash\n`;
     output += `  ${chalk.blue('get-block')}                     Get block by slot\n`;
     output += `  ${chalk.blue('get-transaction')}               Get transaction details\n`;
     output += `  ${chalk.blue('send-transaction')}              Send a signed transaction\n`;
@@ -232,12 +232,12 @@ program.configureHelp({
     output += `  ${chalk.magenta('reset-account')}                Reset account state\n`;
     output += `  ${chalk.magenta('reset-network')}                Reset entire network\n`;
     output += `  ${chalk.magenta('set-program-authority')}        Set program authority\n`;
-    output += `  ${chalk.magenta('export-snapshot')}             Export account snapshots\n`;
+    output += `  ${chalk.magenta('export-snapshot')}              Export account snapshots\n`;
     output += `  ${chalk.magenta('import-snapshot')}             Apply account snapshots\n\n`;
 
     // Web Interface
     output += chalk.bold.cyan('💻 Web Interface:\n');
-    output += `  ${chalk.cyan('ui')}                             Start Windows 95-style Web UI\n\n`;
+    output += `  ${chalk.cyan('ui')}                              Start Windows 95-style Web UI\n\n`;
 
     // Additional Commands
     output += chalk.bold.gray('📋 Additional Commands:\n');

@@ -1,4 +1,3 @@
-import { Buffer } from 'buffer';
 import type { SurfmanClient } from '../../client/SurfmanClient';
 import type {
   AccountSnapshot,
@@ -6,6 +5,23 @@ import type {
   SetAccountUpdate,
 } from '../../types';
 import { setAccount } from './setAccount';
+
+function base64ToHex(data: string): string {
+  if (typeof Buffer !== 'undefined') {
+    return Buffer.from(data, 'base64').toString('hex');
+  }
+
+  if (typeof globalThis.atob === 'function') {
+    const binary = globalThis.atob(data);
+    let hex = '';
+    for (let i = 0; i < binary.length; i += 1) {
+      hex += binary.charCodeAt(i).toString(16).padStart(2, '0');
+    }
+    return hex;
+  }
+
+  throw new Error('Base64 to hex conversion is not supported in this environment');
+}
 
 function normalizeU64(value: number | string | undefined): number | string | undefined {
   if (value === undefined || value === null) {
@@ -29,7 +45,7 @@ function normalizeAccountData(data: string): string {
     return data.toLowerCase();
   }
 
-  return Buffer.from(data, 'base64').toString('hex');
+  return base64ToHex(data);
 }
 
 function buildAccountUpdate(snapshot: AccountSnapshot): SetAccountUpdate {
