@@ -16,6 +16,7 @@ import { getTransactionProfile } from './getTransactionProfile';
 import { registerIdl } from './registerIdl';
 import { getIdl } from './getIdl';
 import { exportSnapshot } from './exportSnapshot';
+import { importSnapshot as importSnapshotHelper } from './importSnapshot';
 import { streamAccount } from './streamAccount';
 import { getStreamedAccounts } from './getStreamedAccounts';
 import { getSurfnetInfo } from './getSurfnetInfo';
@@ -39,6 +40,7 @@ import type {
   GetStreamedAccountsResponse,
   GetSurfnetInfoResponse,
   Scenario,
+  ImportSnapshotOptions,
 } from '../../types';
 
 export class CheatcodesModule {
@@ -136,6 +138,13 @@ export class CheatcodesModule {
     config?: ExportSnapshotConfig
   ): Promise<Record<string, AccountSnapshot>> {
     return exportSnapshot(this.client, config);
+  }
+
+  async importSnapshot(
+    snapshot: Record<string, AccountSnapshot>,
+    options?: ImportSnapshotOptions
+  ): Promise<void> {
+    return importSnapshotHelper(this.client, snapshot, options);
   }
 
   async streamAccount(

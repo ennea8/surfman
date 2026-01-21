@@ -16,6 +16,7 @@ import { createGetTransactionProfileCommand } from './get-transaction-profile';
 import { createRegisterIdlCommand } from './register-idl';
 import { createGetIdlCommand } from './get-idl';
 import { createExportSnapshotCommand } from './export-snapshot';
+import { createImportSnapshotCommand } from './import-snapshot';
 import { createStreamAccountCommand } from './stream-account';
 import { createGetStreamedAccountsCommand } from './get-streamed-accounts';
 import { createGetSurfnetInfoCommand } from './get-surfnet-info';
@@ -42,6 +43,7 @@ export function createCheatcodesCommand(): Command {
     .addCommand(createRegisterIdlCommand())
     .addCommand(createGetIdlCommand())
     .addCommand(createExportSnapshotCommand())
+    .addCommand(createImportSnapshotCommand())
     .addCommand(createStreamAccountCommand())
     .addCommand(createGetStreamedAccountsCommand())
     .addCommand(createGetSurfnetInfoCommand())

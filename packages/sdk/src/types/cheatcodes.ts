@@ -16,9 +16,9 @@ export interface TimeTravelResult {
 export interface SetAccountUpdate {
   data?: string;
   executable?: boolean;
-  lamports?: number;
+  lamports?: number | string;
   owner?: string;
-  rentEpoch?: number;
+  rentEpoch?: number | string;
 }
 
 export interface SetProgramAuthorityParams {
@@ -104,11 +104,23 @@ export interface ExportSnapshotConfig {
 }
 
 export interface AccountSnapshot {
-  lamports: number;
+  lamports: number | string;
   owner: string;
   executable: boolean;
-  rentEpoch: number;
+  rentEpoch: number | string;
   data: string;
+  parsedData?: unknown | null;
+}
+
+export interface ImportSnapshotOptions {
+  concurrency?: number;
+  onProgress?: (progress: SnapshotImportProgress) => void;
+}
+
+export interface SnapshotImportProgress {
+  processed: number;
+  total: number;
+  pubkey: string;
 }
 
 export interface StreamAccountConfig {

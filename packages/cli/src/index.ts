@@ -50,6 +50,7 @@ import { createGetTransactionProfileCommand } from './commands/cheatcodes/get-tr
 import { createRegisterIdlCommand } from './commands/cheatcodes/register-idl';
 import { createGetIdlCommand } from './commands/cheatcodes/get-idl';
 import { createExportSnapshotCommand } from './commands/cheatcodes/export-snapshot';
+import { createImportSnapshotCommand } from './commands/cheatcodes/import-snapshot';
 import { createStreamAccountCommand } from './commands/cheatcodes/stream-account';
 import { createGetStreamedAccountsCommand } from './commands/cheatcodes/get-streamed-accounts';
 import { createGetSurfnetInfoCommand } from './commands/cheatcodes/get-surfnet-info';
@@ -229,7 +230,9 @@ program.configureHelp({
     output += `  ${chalk.magenta('set-token-account')}            Update token account\n`;
     output += `  ${chalk.magenta('reset-account')}                Reset account state\n`;
     output += `  ${chalk.magenta('reset-network')}                Reset entire network\n`;
-    output += `  ${chalk.magenta('set-program-authority')}        Set program authority\n\n`;
+    output += `  ${chalk.magenta('set-program-authority')}        Set program authority\n`;
+    output += `  ${chalk.magenta('export-snapshot')}             Export account snapshots\n`;
+    output += `  ${chalk.magenta('import-snapshot')}             Apply account snapshots\n\n`;
 
     // Web Interface
     output += chalk.bold.cyan('💻 Web Interface:\n');
@@ -279,6 +282,7 @@ program.addCommand(createGetIdlCommand());
 
 // Cheatcodes - Snapshots & Scenarios
 program.addCommand(createExportSnapshotCommand());
+program.addCommand(createImportSnapshotCommand());
 program.addCommand(createRegisterScenarioCommand());
 
 // Cheatcodes - Network Management

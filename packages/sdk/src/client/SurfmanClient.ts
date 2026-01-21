@@ -33,6 +33,8 @@ export class SurfmanClient {
       params,
     };
 
+    const serializedBody = JSON.stringify(body).replace(/"__u64__(\d+)"/g, '$1');
+
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
@@ -40,7 +42,7 @@ export class SurfmanClient {
       const response = await fetch(this.url, {
         method: 'POST',
         headers: this.headers,
-        body: JSON.stringify(body),
+        body: serializedBody,
         signal: controller.signal,
       });
 
