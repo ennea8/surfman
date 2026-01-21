@@ -90,6 +90,7 @@ surfman get-idl --program-id <ID>
 **Snapshots & Scenarios:**
 ```bash
 surfman export-snapshot --output snapshot.json
+surfman import-snapshot --input snapshot.json [--concurrency 50]
 surfman register-scenario --scenario-file scenario.json
 ```
 

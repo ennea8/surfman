@@ -197,10 +197,11 @@ program.configureHelp({
     // Frequently Used Commands
     output += chalk.bold.green('⭐ Frequently Used:\n');
     output += `  ${chalk.cyan('get-account-info')}             ${chalk.gray('Get account information')}\n`;
-    output += `  ${chalk.cyan('get-latest-blockhash')}         ${chalk.gray('Get latest blockhash')}\n`;
-    output += `  ${chalk.cyan('send-transaction')}             ${chalk.gray('Send a transaction')}\n`;
-    output += `  ${chalk.cyan('request-airdrop')}              ${chalk.gray('Request SOL airdrop')}\n`;
-    output += `  ${chalk.cyan('time-travel')}                  ${chalk.gray('Time travel for testing')}\n\n`;
+    output += `  ${chalk.cyan('time-travel')}                  ${chalk.gray('Time travel for testing')}\n`;
+    output += `  ${chalk.cyan('set-account')}                  ${chalk.gray('Modify account data')}\n`;
+    output += `  ${chalk.cyan('export-snapshot')}             ${chalk.gray('Export account snapshots')}\n`;
+    output += `  ${chalk.cyan('import-snapshot')}             ${chalk.gray('Apply account snapshots')}\n`;
+    output += `  ${chalk.cyan('set-program-authority')}        ${chalk.gray('Set program authority')}\n\n`;
 
     // Account Queries
     output += chalk.bold.yellow('📦 Account Queries:\n');
