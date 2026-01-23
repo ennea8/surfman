@@ -62,12 +62,11 @@ import { createUiCommand } from './commands/ui';
 
 const program = new Command();
 
-// Check for --help to show complete list
-const isFullHelp = process.argv.includes('--help');
-const isShortHelp = process.argv.includes('-h');
+// Check for --list to show the complete catalog; keep -h/--help for quick view
+const showFullCommandList = process.argv.includes('--list');
 
 // Handle --help flag to show complete command list
-if (isFullHelp) {
+if (showFullCommandList) {
   console.log(chalk.bold.cyan('\n🌊 Surfman CLI - Complete Command List\n'));
   
   console.log(chalk.bold.yellow('📦 Account Queries (5 commands):\n'));
@@ -198,8 +197,8 @@ program.configureHelp({
     // Options
     output += chalk.bold('Options:\n');
     output += `  -V, --version    ${chalk.gray('Output the version number')}\n`;
-    output += `  -h               ${chalk.gray('Display frequently used commands (quick view)')}\n`;
-    output += `  --help           ${chalk.gray('Display all commands grouped by module')}\n\n`;
+    output += `  -h, --help       ${chalk.gray('Display frequently used commands (quick view)')}\n`;
+    output += `  --list           ${chalk.gray('Display all commands grouped by module')}\n\n`;
 
     // Frequently Used Commands
     output += chalk.bold.green('⭐ Frequently Used:\n');
@@ -257,7 +256,7 @@ program.configureHelp({
 
     // Footer
     output += chalk.gray('💡 Tips:\n');
-    output += chalk.gray('   Use ') + chalk.cyan('surfman --help') + chalk.gray(' to see all 58 commands grouped by module\n');
+    output += chalk.gray('   Use ') + chalk.cyan('surfman --list') + chalk.gray(' to see all 58 commands grouped by module\n');
     output += chalk.gray('   Use ') + chalk.cyan('surfman <command> -h') + chalk.gray(' for detailed command options\n');
     output +=
       chalk.gray('🐛 Contributions welcome(bugs/features/PRs):') +

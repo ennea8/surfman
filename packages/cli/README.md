@@ -21,9 +21,9 @@ CLI tool for SurfPool RPC API interaction - Command-line interface for Solana lo
 
 ```bash
 npm install -g surfman
- or
+# or
 pnpm install -g surfman
- or
+# or
 yarn global add surfman
 ```
 
